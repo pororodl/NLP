@@ -1,3 +1,6 @@
+# -*- coding:utf-8 -*-
+#!/usr/bin/env python3
+
 import tensorflow as tf
 # from tensorflow import keras
 
@@ -39,7 +42,6 @@ class CBOW(Model):
                                                  embeddings_initializer=keras.initializers.random_normal(0.,0.1),)
         self.nce_w = self.add_weight(name='nce_w',shape=[v_dim,emb_dim],
                                      initializer=keras.initializers.TruncatedNormal(0.,0.1),trainable=True)
-        print(dir(self.nce_w))
         self.nce_b = self.add_weight(name='nce_b',shape=(v_dim,),
                                      initializer=keras.initializers.Constant(0.1))
         self.opt = keras.optimizers.Adam(0.01)
