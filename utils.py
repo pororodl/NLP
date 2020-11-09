@@ -83,7 +83,3 @@ if __name__ == '__main__':
     ]
     process_w2v_data(corpus)
 
-
-
-import tensorflow as tf
-print(tf.__version__)
