@@ -21,10 +21,6 @@ def process_w2v_data(corpus,skip_window=2,method='cbow'):
     all_words = [sentence.split(" ") for sentence in corpus]
     all_words = np.array(list(itertools.chain(*all_words)))
     vocab,v_count = np.unique(all_words,return_counts=True)
-    print('vocal',vocab)
-    print('v-count',v_count)
-    # vocab1 = vocab[np.argsort(v_count)]
-    # print(vocab1)
     vocab2 = vocab[np.argsort(v_count)[::-1]]    # 按照个数大小从大到小排列vocab
     v2i = {v:i for i,v in enumerate(vocab2)}
     i2v = {i:v for v,i in v2i.items()}
@@ -56,8 +52,6 @@ def process_w2v_data(corpus,skip_window=2,method='cbow'):
         x,y = pairs[:,:-1],pairs[:,-1]
     else:
         raise ValueError
-    print(x)
-    print(y)
     return Dataset(x,y,v2i,i2v)
 
 
